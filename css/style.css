@@ -10406,13 +10406,15 @@ h6,
 
 .bg-service {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/carousel-1.jpg), no-repeat center center;
+    url("/cleaning-services-website-static-website-main/newImages/pro6.jpg"),
+    no-repeat center center;
   background-size: cover;
 }
 
 .bg-portfolio {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/carousel-2.jpg), no-repeat center center;
+    url("/cleaning-services-website-static-website-main/newImages/sr2.jpg"),
+    no-repeat center center;
   background-size: cover;
 }
 
@@ -10421,7 +10423,6 @@ h6,
     url(../img/carousel-3.jpg), no-repeat center center;
   background-size: cover;
 }
-
 .owl-carousel .owl-nav {
   position: absolute;
   width: 100%;
