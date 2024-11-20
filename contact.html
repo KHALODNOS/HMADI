@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,6 +24,15 @@
     
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+      ></script>
+      <script type="text/javascript">
+        (function () {
+          emailjs.init("YtRLijAigFJUf0Kew"); // استبدل بـ Public Key الخاص بك
+        })();
+      </script>
     </head>
 
   <body>
@@ -71,11 +81,11 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Acceuil</a>
+                            <a href="index.html" class="nav-item nav-link">Acceuil</a>
                             <a href="about.html" class="nav-item nav-link">A propos</a>
                             <a href="service.html" class="nav-item nav-link">Services</a>
                             <a href="project.html" class="nav-item nav-link">Projects</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="contact.html" class="nav-item nav-link active">Contact</a>
                         </div>
                         <a href="" class="btn btn-primary mr-3 d-none d-lg-block">reviews</a>
                     </div>
@@ -135,7 +145,7 @@
                       type="text"
                       class="form-control p-4"
                       id="name"
-                      placeholder="Your Name"
+                      placeholder="Ton Nom"
                       required="required"
                       data-validation-required-message="Please enter your name"
                     />
@@ -146,7 +156,7 @@
                       type="email"
                       class="form-control p-4"
                       id="email"
-                      placeholder="Your Email"
+                      placeholder="Ton Email"
                       required="required"
                       data-validation-required-message="Please enter your email"
                     />
@@ -179,17 +189,20 @@
                   <button
                     class="btn btn-primary btn-block py-3 px-5"
                     type="submit"
-                    id="sendMessageButton"
+                    id="sendessageButton"
                   >
                     Send Message
                   </button>
                 </div>
               </form>
+              
+              <div id="success"></div> <!-- Display success or error messages here -->
+              
             </div>
           </div>
           <div class="col-lg-5" style="min-height: 400px">
             <div class="position-relative h-100 rounded overflow-hidden">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106376.56000740414!2d-7.669394253948181!3d33.57240323250468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778aa113b%3A0xb06c1d84f310fd3!2sCasablanca!5e0!3m2!1sfr!2sma!4v1731520106990!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106376.56000740414!2d-7.669394253948181!3d33.57240323250468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778aa113b%3A0xb06c1d84f310fd3!2sCasablanca!5e0!3m2!1sfr!2sma!4v1731520106990!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
         </div>
@@ -274,8 +287,73 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary px-3 back-to-top"
-      ><i class="fa fa-angle-double-up"></i
-    ></a>
+      ><i class="fa fa-angle-double-up"></i>
+    </a>
+
+    <script>
+      document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+
+    var params = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    };
+
+    const serviceID = "service_h8f7bbe"; // استبدل بـ Service ID الخاص بك
+    const templateID = "template_j5g3efc"; // استبدل بـ Template ID الخاص بك
+
+    emailjs
+      .send(serviceID, templateID, params)
+      .then((res) => {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("subject").value = "";
+        document.getElementById("message").value = "";
+        console.log(res);
+        alert("Your message sent successfully!!");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("حدث خطأ أثناء إرسال الرسالة. الرجاء المحاولة مرة أخرى.");
+      });
+  });
+
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+
+    var params = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    };
+
+    const serviceID = "service_h8f7bbe"; // استبدل بـ Service ID الخاص بك
+    const templateID = "template_j5g3efc"; // استبدل بـ Template ID الخاص بك
+
+    emailjs
+      .send(serviceID, templateID, params)
+      .then((res) => {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("subject").value = "";
+        document.getElementById("message").value = "";
+        console.log(res);
+        alert("Your message sent successfully!!");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("حدث خطأ أثناء إرسال الرسالة. الرجاء المحاولة مرة أخرى.");
+      });
+  });
+
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -287,7 +365,9 @@
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
+
     <!-- Contact Javascript File -->
+    <!-- <script src="mail/jqBootstrapValidation.min.js"></script> -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
 
